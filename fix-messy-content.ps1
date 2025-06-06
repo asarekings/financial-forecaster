@@ -1,4 +1,270 @@
-﻿// Financial Market Forecaster - Clean JavaScript
+# Fix messy content - Clean Financial Market Forecaster Setup
+# Date: 2025-06-06
+
+Write-Host "🔧 Fixing messy content issues..." -ForegroundColor Yellow
+
+# Clean and recreate with proper structure
+Write-Host "📁 Cleaning and restructuring..." -ForegroundColor Cyan
+
+# Remove problematic files but keep git
+Get-ChildItem -Exclude ".git*", "*.ps1" | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+
+# Create clean directory structure
+$dirs = @("css", "js", "assets", "img")
+foreach ($dir in $dirs) {
+    New-Item -ItemType Directory -Path $dir -Force | Out-Null
+}
+
+# Create .nojekyll for GitHub Pages
+"" | Out-File -FilePath ".nojekyll" -Encoding UTF8
+
+# Create clean, working CSS
+$cleanCSS = @'
+/* Financial Market Forecaster - Clean CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #2563eb;
+    --secondary: #64748b;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --info: #06b6d4;
+    --light: #f8fafc;
+    --dark: #1e293b;
+    --bg-light: #ffffff;
+    --bg-dark: #0f172a;
+    --text-light: #334155;
+    --text-dark: #e2e8f0;
+    --border-light: #e2e8f0;
+    --border-dark: #334155;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-light);
+    background-color: var(--bg-light);
+    transition: all 0.3s ease;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+    --bg-light: var(--bg-dark);
+    --text-light: var(--text-dark);
+    --border-light: var(--border-dark);
+}
+
+[data-theme="dark"] body {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+[data-theme="dark"] .navbar {
+    background-color: var(--dark) !important;
+}
+
+[data-theme="dark"] .card {
+    background-color: var(--dark);
+    border-color: var(--border-dark);
+    color: var(--text-dark);
+}
+
+[data-theme="dark"] .bg-light {
+    background-color: var(--dark) !important;
+}
+
+/* Navigation */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.theme-toggle {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.8);
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+}
+
+.theme-toggle:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+/* Hero section */
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 0;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+}
+
+.hero-visual {
+    position: relative;
+}
+
+.chart-placeholder {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 3rem;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Cards */
+.card {
+    border: 1px solid var(--border-light);
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    background-color: var(--bg-light);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.feature-card {
+    height: 100%;
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Charts */
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    padding: 1rem;
+}
+
+.chart-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--secondary);
+    font-style: italic;
+}
+
+/* Dashboard specific */
+.dashboard-header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--info) 100%);
+    color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.indicator-table th {
+    color: var(--secondary);
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-light);
+}
+
+.indicator-table td {
+    font-weight: 500;
+}
+
+/* Status colors */
+.status-positive { color: var(--success); }
+.status-negative { color: var(--danger); }
+.status-neutral { color: var(--warning); }
+
+/* Footer */
+footer {
+    margin-top: 4rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border-light);
+    background-color: var(--bg-light);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .chart-container {
+        height: 250px;
+    }
+    
+    .navbar-nav {
+        margin-top: 1rem;
+    }
+    
+    .theme-toggle {
+        margin-top: 0.5rem;
+    }
+}
+
+/* Utility classes */
+.text-primary { color: var(--primary) !important; }
+.text-success { color: var(--success) !important; }
+.text-danger { color: var(--danger) !important; }
+.text-warning { color: var(--warning) !important; }
+.text-info { color: var(--info) !important; }
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+/* Loading animation */
+.loading {
+    opacity: 0.6;
+}
+
+.spinner {
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid transparent;
+    border-top: 2px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+'@
+
+$cleanCSS | Out-File -FilePath "css/style.css" -Encoding UTF8
+Write-Host "✅ Created clean CSS" -ForegroundColor Green
+
+# Create robust JavaScript
+$cleanJS = @'
+// Financial Market Forecaster - Clean JavaScript
 (function() {
     'use strict';
     
@@ -68,7 +334,7 @@
     function updateThemeToggle() {
         const toggle = document.querySelector('.theme-toggle');
         if (toggle) {
-            toggle.textContent = App.theme === 'light' ? 'ðŸŒ™ Dark' : 'â˜€ï¸ Light';
+            toggle.textContent = App.theme === 'light' ? '🌙 Dark' : '☀️ Light';
         }
     }
     
@@ -342,3 +608,9 @@
     };
     
 })();
+'@
+
+$cleanJS | Out-File -FilePath "js/main.js" -Encoding UTF8
+Write-Host "✅ Created clean JavaScript" -ForegroundColor Green
+
+# Create
