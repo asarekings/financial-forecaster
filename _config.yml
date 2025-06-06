@@ -1,5 +1,15 @@
+# Site settings
 title: Financial Market Forecaster
-description: A comprehensive financial market forecasting system
-baseurl: "/financial-forecaster"
-url: "https://asarekings.github.io"
-theme: minima
+email: your-email@example.com
+description: >-
+  A comprehensive financial market forecasting system combining technical indicators, 
+  sentiment analysis and macroeconomic factors.
+baseurl: "/financial-forecaster"  # This should match your repository name
+url: "https://asarekings.github.io"  # This should be your GitHub Pages domain
+
+# Build settings
+markdown: kramdown
+theme: minima  # Using the minima theme which is supported by GitHub Pages
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
