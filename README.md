@@ -33,4 +33,8 @@ bundle install
 pip install -r requirements.txt
 
 # Run the Jekyll site locally
+<<<<<<< HEAD
 bundle exec jekyll serve
+=======
+bundle exec jekyll serve
+>>>>>>> 24ab682f93811a0627102ad32662c4cbe397736f
