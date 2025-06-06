@@ -1,1 +1,5 @@
-# Site settings will go here
+title: Financial Market Forecaster
+description: A comprehensive financial market forecasting system
+baseurl: "/financial-forecaster"
+url: "https://asarekings.github.io"
+theme: minima

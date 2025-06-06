@@ -1,4 +1,52 @@
 ---
 layout: default
+title: Financial Market Forecaster
 ---
-# Main dashboard will go here
+
+<div class="dashboard-welcome">
+  <div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">Financial Market Forecaster</h1>
+      <p class="col-md-8 fs-4">Combining market indicators, sentiment analysis, and macroeconomic factors to predict market movements with precision.</p>
+      <button class="btn btn-primary btn-lg" id="startAnalysisBtn" type="button">Start Analysis</button>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col-md-4">
+    <div class="card h-100">
+      <div class="card-header">Market Overview</div>
+      <div class="card-body">
+        <canvas id="marketOverviewChart"></canvas>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated: <span id="marketUpdateTime">Loading...</span></small>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100">
+      <div class="card-header">Sentiment Analysis</div>
+      <div class="card-body">
+        <canvas id="sentimentGaugeChart"></canvas>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Based on <span id="sentimentSourceCount">0</span> sources</small>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100">
+      <div class="card-header">Forecast Prediction</div>
+      <div class="card-body">
+        <div id="forecastPrediction"></div>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Prediction confidence: <span id="predictionConfidence">0%</span></small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ '/assets/js/dashboard.js' | relative_url }}"></script>
