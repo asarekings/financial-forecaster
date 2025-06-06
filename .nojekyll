@@ -1,1 +1,6 @@
+<<<<<<< HEAD
 ﻿
+=======
+# Create an empty .nojekyll file
+New-Item -Path ".nojekyll" -ItemType File -Force
+>>>>>>> a07c63fb781a061c1df783d9a40e330844bde903
