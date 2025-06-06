@@ -1,0 +1,2 @@
+# Create an empty .nojekyll file
+New-Item -Path ".nojekyll" -ItemType File -Force
