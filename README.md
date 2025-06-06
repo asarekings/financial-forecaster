@@ -2,6 +2,10 @@
 
 A comprehensive financial market forecasting system that combines technical indicators, sentiment analysis, and macroeconomic factors to predict market movements with advanced visualization and backtesting capabilities.
 
+## 📊 Live Demo
+
+**[View the live application](https://asarekings.github.io/financial-forecaster/)**
+
 ## Features
 
 - **Market Data Analysis**: Track and analyze historical price data from multiple markets
